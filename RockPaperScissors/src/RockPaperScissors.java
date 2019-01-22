@@ -10,6 +10,7 @@ public class RockPaperScissors {
 		EnumSet.allOf(Options.class).forEach(option ->System.out.println(option));		
 		userHand = sc.nextLine();
 		computerHand = GenerateRandomHand().toString();
+		System.out.println(String.format("ComputerHand:%s",computerHand));
 		CompareHand(userHand,computerHand);
 		sc.close();
 	}
@@ -24,7 +25,7 @@ public class RockPaperScissors {
 	{
 		if(userHand.equals(randomHand))
 		{
-			System.out.println("User and Computer hand are same.Game Draw!!");			
+			System.out.println("User and Computer hand are same.It's a Tie!!");			
 		}
 		else if(userHand.equals(Options.Rock.toString()) &&  randomHand.equals(Options.Scissors.toString()))
 		{

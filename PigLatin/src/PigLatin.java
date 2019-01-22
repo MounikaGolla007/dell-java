@@ -21,15 +21,20 @@ public class PigLatin {
 	  return false;	
 	}
 	
+	public static int IsWordContainVowel(char[] words,List<String> vowels)
+	{
+		for(int i = 0; i < words.length; i++)
+		{			
+			if(vowels.contains(Character.toString(words[i])))return i;
+		}
+		return -1;
+	}
+	
 	public static int IsWordHasVowels(String word,List<String> vowels)
 	{		 
 		if(vowels.isEmpty()) return -1;
-		for(String v:vowels) {
-			if(word.toUpperCase().contains(v)) {
-				return word.toUpperCase().indexOf(v);
-			}
-		}
-		return -1;
+		char[] words = word.toUpperCase().toCharArray();		
+		return IsWordContainVowel(words,vowels);
 	}
 	
 	public static String Translate(String word,List<String> vowels)
@@ -40,7 +45,7 @@ public class PigLatin {
 		int vowelIndex = IsWordHasVowels(word,vowels);
 		if(vowelIndex > 0) {
 			String part = word.substring(0,vowelIndex);
-			return word.replace(part,"").concat(part).concat("yay");
+			return word.replaceFirst(part, "").concat(part).concat("ay");
 		}
 		if(vowelIndex < 0) {
 			return word.concat("ay");

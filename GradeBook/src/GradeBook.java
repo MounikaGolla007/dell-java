@@ -48,7 +48,8 @@ public class GradeBook {
 				Average +=  Double.parseDouble(gradeList[i]);
 			}
 			Average = Average/gradeList.length;
-			studentAvgGrades.put(entry.getKey(),Average);			
+			studentAvgGrades.put(entry.getKey(),Average);	
+			Average = 0.0;
 		}		
 	}
 	

@@ -118,9 +118,13 @@ public class Controller {
 		try {
 			entry = dao.get(id);
 			if (entry != null) {
-				entry.setCompletedFlag("Done");
-				dao.update(entry);
-				consoleUtils.info("Item Updated");
+				if (!entry.getCompletedFlag().equalsIgnoreCase("done")) {
+					entry.setCompletedFlag("Done");
+					dao.update(entry);
+					consoleUtils.info("Item Updated");
+				} else {
+					consoleUtils.error("Item is marked Done already!");
+				}
 			} else {
 				consoleUtils.error("could not find an item");
 			}

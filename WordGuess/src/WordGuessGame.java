@@ -18,6 +18,7 @@ public class WordGuessGame {
 	static List<String> alphaWords;
 	static boolean isValidInput = true;
 	static boolean isWordComplete = true;
+	static int numberOfGuesses = 0;
 
 	public static void main(String[] args) throws IOException {
 		readWordDictionary();
@@ -32,9 +33,10 @@ public class WordGuessGame {
 				String userInput = sc.nextLine();
 				ValidateUserInput(userInput); // throw exception for invalid input and continue to ask for input
 				isValidInput = false;
+				if (!randomWord.contains(userInput))
+					System.out.println("Incorrect Guess.Try again!");
 				hiddenWord = getWordWithGuessedLetter(randomWord, userInput, hiddenWord); // Display hidden word with
-																							// guessed letter
-				System.out.println(hiddenWord);
+				System.out.println(hiddenWord);// guessed letter
 				isWordComplete = hiddenWord.contains("-");
 
 			} catch (Exception e) {
